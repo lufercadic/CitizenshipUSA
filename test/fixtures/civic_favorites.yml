@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  CivicUnit: one
+  CivicAnswer: one
+  CivicQuestion: one
+
+two:
+  CivicUnit: two
+  CivicAnswer: two
+  CivicQuestion: two
