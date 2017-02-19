@@ -22,3 +22,18 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+NULE
+Comandos que use
+#rails g devise:install
+rails g devise User
+rails g model Zone Nombre:string Principal:boolean
+rails g model CivicType Nombre:string
+rails g model CivicUnit User:references NumEvaluaciones:integer Puntaje:integer
+rails g model CivicQuestion Descripcion:string Destacada:boolean
+rails g model CivicAnswer Descripcion:string Correcta:boolean Activa:boolean CivicQuestion:references Zone:references
+rails g model CivicFavorite CivicUnit:references CivicAnswer:references CivicQuestion:references
+rails g model CivicTag CivicQuestion:references CivicType:references
+rails g model CivicTest CivicUnit:references NumPreguntas:integer NumCorrectas:integer Puntaje:integer Aprobado:boolean Finalizo:datetime
+rails g model CivicTestAnswer CivicTest:references CivicQuestion:references CivicAnswer:references Correcta:boolean
