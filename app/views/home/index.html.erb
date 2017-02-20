@@ -1,35 +1,32 @@
-<h1>Home</h1>
 
-<div class="col-md-9 col-lg-10 main">
+<div class="container-fluid" id="main">
+ <div class="col-xs-12 col-sm-12 col-md-12 col-l ">
 
-
-
-
-  <div class="card card-block text-center">
-    <h4 class="card-title">Pregunta No. 1</h4>
-    <p class="card-text">Este es el texto de la pregunta y repito el texto de la preguntaEste es el texto de la pregunta y repito el texto de la preguntaEste es el texto de la pregunta y repito el texto de la preguntaEste es el texto de la pregunta y repito el texto de la pregunta</p>
-    <hr>
-    <p>Respuesta:</p>
-    <p>esta es la respueasta de la pregunta.</p>
-    <p class="card-text"><small class="text-muted">Last updated 5 mins ago</small></p>
+  <div class="alert alert-info alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="alert-heading ">Flashcards!</h4>
+    <p> Este es es un texto introductrio para las flashcards>>??/..././.Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
   </div>
-  <br>
-  <div class="card card-block text-center">
-    <h4 class="card-title">Pregunta No. 1</h4>
-    <p class="card-text">Este es el texto de la pregunta y repito el texto de la preguntaEste es el texto de la pregunta y repito el texto de la preguntaEste es el texto de la pregunta y repito el texto de la preguntaEste es el texto de la pregunta y repito el texto de la pregunta</p>
-    <hr>
-    <p>Respuesta:</p>
-    <p>esta es la respueasta de la pregunta.</p>
-    <button class="btn bg-primary"> este botod debe ser grande</button>
-  </div>
-  <br>
-  <div class="card card-block text-center">
-    <h4 class="card-title">Pregunta No. 1</h4>
-    <p class="card-text">Este es el texto de la pregunta y repito el texto de la preguntaEste es el texto de la pregunta y repito el texto de la preguntaEste es el texto de la pregunta y repito el texto de la preguntaEste es el texto de la pregunta y repito el texto de la pregunta</p>
-    <hr>
-    <p>Respuesta:</p>
-    <p>esta es la respueasta de la pregunta.</p>
-    <p class="card-text"><small class="text-muted">Last updated 5 mins ago</small></p>
-  </div>
+  <div class="row">
+    <div class="col">
+    <!--  <p> Columna inicial.. por si queremos poner algo aqui.. sino se quita</p>-->
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-10 col-l">
+        <%= render "partials/cards"%>
+    </div>
+
+    <div class="col">
+     <!-- <p> Columna 3.. por si queremos poner algo aqui.. sino se quita</p>-->
+    </div>
+</div>
+
+
   <div><%=link_to 'vamos pa\' google ole ole', 'http://google.com', :class => "btn btn-success" %></div>
+
+
+
 </div>

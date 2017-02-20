@@ -1,69 +1,118 @@
 
-//@import 'variables';
-//@import 'bootswatch';
+/* PALETA DE COLORES USA*/
 
-body { padding-top: 70px;
-background-color: #EDE4E9;
+//## Gray and brand colors for use across Bootstrap.
+
+$gray-base:              #000 !default;
+$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
+$gray-dark:              #042A69;   // #333
+$gray:                   #534561; // #555
+$gray-light:             #BF1438; // #777
+$gray-lighter:           #4F6995; // #eee
+
+$brand-primary:         #4E3F49; // #337ab7
+$brand-success:         #5cb85c !default;
+$brand-info:            #5bc0de !default;
+$brand-warning:         #f0ad4e !default;
+$brand-danger:          #d9534f !default;
+
+
+//## Settings for some of the most global styles.
+
+//** Background color for `<body>`.
+$body-bg: #EDE4E9;
+//** Global text color on `<body>`.
+$text-color:            $gray-dark !default;
+
+//** Global textual link color.
+$link-color:            $brand-primary !default;
+//** Link hover color set via `darken()` function.
+$link-hover-color:      darken($link-color, 15%) !default;
+//** Link hover decoration.
+$link-hover-decoration: underline !default;
+
+
+
+
+
+
+
+
+/* Funciones en SaSS para no repetir codigo*/
+
+// para calcular ytransformar px a REM y  evitar calcularlo manualmente cada vez
+@function calculateRem($size) {
+  $remSize: $size / 16px; //Default font size on html element is 100%, equivalent to 16px;
+  @return #{$remSize}rem;
 }
-/*navbar*/
+
+
+
+
+
+
+
+
+/*Aqui inician los componentes de la pagina*/
+
+body {
+  padding-top: calculateRem(70px); //para que la barra de navegacion fija no tape parte del contenido -- llama a la funcion calculateRem para calcular el valor REM de 70px
+  background-color: $body-bg;
+}
+
+//Navegacion:  navbar
 .navbar{
-  /* Add shadows to create the "card" effect */
-  /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  transition: 0.3s;
-  background-color: #042A69 !important;
+
+    background-color: $gray-dark !important;
+    box-shadow: 0 calculateRem(1px) calculateRem(2px) rgba(0, 0, 0, 0.6);
+    transition: 0.3s;
 
 }
+
+//Color de texto para Parrafos
 p{
-  color: #042A69;
+  color: $gray-dark;
 }
+
 h4  {
-  color:#BF1438;
+  color:$gray-light;
 }
-.bg-primary {
-  color: #fff; }
 
-.bg-primary {
-  background-color: #4E3F49; }
+hr {
+  border: 2 !important;
+  height: 1px !important;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)) !important;
+  color: #042A69 !important;
+}
 
-a.bg-primary:hover {
-  background-color: #32282f; }
+//Botones
 
 .btn {
   position: relative;
-
   display: block;
-  margin: 30px auto;
+  margin: calculateRem(30px) auto;
   padding: 0;
-
   overflow: hidden;
-
   border-width: 0;
   outline: none;
-  border-radius: 2px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
-
-  background-color: #4F6995 !important;
-  color: #ecf0f1;
-
+  border-radius: calculateRem(2px);
+  box-shadow: 0 calculateRem(1px) calculateRem(4px) rgba(0, 0, 0, .6);
+  background-color: $gray-lighter!important;
+  color: $body-bg;
   transition: background-color .3s;
-
-  height: 54px;
-  line-height: 56px
+  height: calculateRem(54px);
+  line-height: calculateRem(56px);
 }
 
 .btn:hover, .btn:focus {
-  background-color: #27ae60;
+  background-color: $gray-light;
 }
 
 .btn > * {
   position: relative;
 }
 
-.btn span {
-  display: block;
-  padding: 12px 24px;
-}
+
 
 .btn:before {
   content: "";
@@ -75,11 +124,8 @@ a.bg-primary:hover {
   display: block;
   width: 0;
   padding-top: 0;
-
   border-radius: 100%;
-
   background-color: rgba(236, 240, 241, .3);
-
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -90,7 +136,6 @@ a.bg-primary:hover {
 .btn:active:before {
   width: 120%;
   padding-top: 120%;
-
   transition: width .2s ease-out, padding-top .2s ease-out;
 }
 
@@ -109,22 +154,24 @@ a.bg-primary:hover {
 }
 
 .btn.red {
-  background-color: #e74c3c;
+  background-color: #e74c3c !important;
 }
 
 .btn.red:hover, .btn.red:focus {
-  background-color: #c0392b;
+  background-color: #303ec0 !important;
 }
 
 
+//cards
+
 .card {
   overflow:hidden;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 calculateRem(1px) calculateRem(2px) 0 rgba(0,0,0,0.2);
   transition: 0.3s;
 }
 /* On mouse-over, add a deeper shadow */
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 calculateRem(8px)  calculateRem(16px) 0 rgba(0,0,0,0.2);
 }
 .card-block .rotate {
   z-index: 8;
@@ -133,14 +180,14 @@ a.bg-primary:hover {
 }
 /* Add some padding inside the card container */
 .container {
-  padding: 2px 16px;
+  padding: calculateRem(2px)  calculateRem(16px);
 }
 .card-block .rotate i {
   color: rgba(20, 20, 20, 0.15);
   position: absolute;
   left: 0;
   left: auto;
-  right: -10px;
+  right: calculateRem(-10px);
   bottom: 0;
   display: block;
   -webkit-transform: rotate(-44deg);
@@ -148,4 +195,10 @@ a.bg-primary:hover {
   -o-transform: rotate(-44deg);
   -ms-transform: rotate(-44deg);
   transform: rotate(-44deg);
+}
+//para poner los botones a la derecha
+.card-menu-r
+{
+
+  float: right;
 }
