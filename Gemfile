@@ -55,3 +55,4 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 
 gem 'rails-assets-tether'
+gem 'font-awesome-sass' #para los iconos ..ya no vienen por defecto en bootstrap 4

@@ -2,20 +2,19 @@
 /* PALETA DE COLORES USA*/
 
 //## Gray and brand colors for use across Bootstrap.
+//estas variables viened de boostrap y se usan para cambiar el juego de colores completo//el archivo  _bootstrap-variables.scss  contiene la lista completa de varialbes que se pueden cambiar .. solo hay que sacar las que nos interesen y ponerlas aqui con el valor que queramos.
 
-$gray-base:              #000 !default;
+$gray-base:              #EDE4E9 !default;
 $gray-darker:            lighten($gray-base, 13.5%) !default; // #222
-$gray-dark:              #042A69;   // #333
-$gray:                   #534561; // #555
-$gray-light:             #BF1438; // #777
+$gray-dark:               #042040;   // #333
+$gray:                   #4E3F49; // #555
+$gray-light:             #534561; // #777
 $gray-lighter:           #4F6995; // #eee
-
-$brand-primary:         #4E3F49; // #337ab7
+$brand-primary:         #042A69 !default; // #337ab7
 $brand-success:         #5cb85c !default;
 $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
-$brand-danger:          #d9534f !default;
-
+$brand-danger:          #BF1438 !default;
 
 //## Settings for some of the most global styles.
 
@@ -33,14 +32,10 @@ $link-hover-decoration: underline !default;
 
 
 
-
-
-
-
-
 /* Funciones en SaSS para no repetir codigo*/
 
-// para calcular ytransformar px a REM y  evitar calcularlo manualmente cada vez
+// para calcular y transformar px a REM y  evitar calcularlo manualmente cada vez
+
 @function calculateRem($size) {
   $remSize: $size / 16px; //Default font size on html element is 100%, equivalent to 16px;
   @return #{$remSize}rem;
@@ -55,35 +50,25 @@ $link-hover-decoration: underline !default;
 
 /*Aqui inician los componentes de la pagina*/
 
+
 body {
   padding-top: calculateRem(70px); //para que la barra de navegacion fija no tape parte del contenido -- llama a la funcion calculateRem para calcular el valor REM de 70px
-  background-color: $body-bg;
+ // background-color: $body-bg; // ya no es necesario darle color.. lo toma de las variables de bootstrap
+
 }
 
 //Navegacion:  navbar
 .navbar{
-
-    background-color: $gray-dark !important;
+    background-color: $brand-primary !important;
     box-shadow: 0 calculateRem(1px) calculateRem(2px) rgba(0, 0, 0, 0.6);
     transition: 0.3s;
-
-}
-
-//Color de texto para Parrafos
-p{
-  color: $gray-dark;
 }
 
 h4  {
-  color:$gray-light;
+  color:$brand-danger !important;  //titulos de color rojo
 }
 
-hr {
-  border: 2 !important;
-  height: 1px !important;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)) !important;
-  color: #042A69 !important;
-}
+
 
 //Botones
 
@@ -95,32 +80,21 @@ hr {
   overflow: hidden;
   border-width: 0;
   outline: none;
-  border-radius: calculateRem(2px);
+  border-radius: calculateRem(1px);
   box-shadow: 0 calculateRem(1px) calculateRem(4px) rgba(0, 0, 0, .6);
-  background-color: $gray-lighter!important;
-  color: $body-bg;
+  //background-color: $gray-lighter!important;
+  //color: $body-bg;
   transition: background-color .3s;
   height: calculateRem(54px);
   line-height: calculateRem(56px);
+
 }
-
-.btn:hover, .btn:focus {
-  background-color: $gray-light;
-}
-
-.btn > * {
-  position: relative;
-}
-
-
 
 .btn:before {
   content: "";
-
   position: absolute;
   top: 50%;
   left: 50%;
-
   display: block;
   width: 0;
   padding-top: 0;
@@ -139,30 +113,8 @@ hr {
   transition: width .2s ease-out, padding-top .2s ease-out;
 }
 
-/* Styles, not important */
-*, *:before, *:after {
-  box-sizing: border-box;
-}
 
-
-.btn.orange {
-  background-color: #e67e22;
-}
-
-.btn.orange:hover, .btn.orange:focus {
-  background-color: #d35400;
-}
-
-.btn.red {
-  background-color: #e74c3c !important;
-}
-
-.btn.red:hover, .btn.red:focus {
-  background-color: #303ec0 !important;
-}
-
-
-//cards
+//las tarjetas
 
 .card {
   overflow:hidden;
@@ -195,10 +147,4 @@ hr {
   -o-transform: rotate(-44deg);
   -ms-transform: rotate(-44deg);
   transform: rotate(-44deg);
-}
-//para poner los botones a la derecha
-.card-menu-r
-{
-
-  float: right;
 }
