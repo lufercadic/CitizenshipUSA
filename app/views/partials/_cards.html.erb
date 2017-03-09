@@ -1,8 +1,3 @@
-
-
-
-
-
 <div class="card text-center">
   <div class="card-header">
 <span>Pregunta No. 1</span>
@@ -33,79 +28,87 @@
   </div>
 </div>
 
-<br>
-
-
-
-<div class="card text-center">
-  <div class="card-header">
-    <span>Pregunta No. 1</span>
-    <span class="float-right clickable"><i class="fa fa-bookmark fa-1x" aria-hidden="true"></i>
-    <span class="float-right clickable"><i class="fa fa-check fa-1x" aria-hidden="true"></i>
-
-  </div>
-  <div class="card-block">
-    <h4 class="card-title">A: Principles of American Democracy</h4>
-    <p class="card-text">What is the supreme law of the land?</p>
-  </div>
-  <div>
-    <p>
-      <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Ver Respuesta
-      </button>
-    </p>
-    <div class="collapse" id="collapseExample">
-      <div class="card card-block">
-        <p><strong>R:</strong> The Constitution </p>
-        <p>The Founding Fathers of the United States wrote the Constitution in 1787. The Constitution is the “supreme law of the land.” The U.S. Constitution has lasted longer than any other country’s constitution. It establishes the basic principles of the United States government. The Constitution establishes a system of government called “representative democracy.” In a representative democracy, citizens choose representatives to make the laws. U.S. citizens also choose a president to lead the executive branch of government. The Constitution lists fundamental rights for all citizens and other people living in the United States. Laws made in the United States must follow the Constitution</p></div>
-    </div>
-  </div>
-
-
-  <div class="card-footer text-muted">
-    aqui puedein ir mas botones o algo
-  </div>
-</div>
-
-
 <br />
+
+
+
 
 <script type="text/javascript">
-  
+  /*Esta es la funcion para mostras las respuestas*/
+  function mostrar(id)
+  {
+    var data = $("#q" + id);
+    var but = $("#b" + id);
+    but.hide();
+    data.show(500);
+  }
 </script>
 
+
+<style type="text/css">
+  /*Estilos de la tarjeta.
+    Por el momento lo dejo aqui porque no estoy seguro donde
+    los pondremos ya que es algo solo para esta seccion*/
+
+  .card-footer { background-color: #042040; } /*$gray-dark*/
+
+  .card-header { background-color: #BF1438; } /*$brand-danger*/
+
+  .card-header-title { font-size: 1.5rem;  font-weight: bold;  color: White; }
+
+  .card-block-img { float: left; padding: 5px 25px 5px 10px; }
+
+  .card-block-main { float: left; text-align: left; max-width: 70%; }
+
+  .card-block-main-question { color: #BF1438; font-size: 1.75rem; } /*$brand-danger*/
+
+  .card-block-main-answer { color: black; font-size: 1.75rem; }
+
+  .card-block-main-text { color: black; font-size: 1rem;  }
+
+</style>
+
+
+<% [1, 2, 3].each do |num| %>
+
 <div class="card text-center">
-  <div class="card-header" style="background-color: #BF1438">
-    <span style="font-size: 1.5rem; font-weight: bold; color: White">Question 69 - Colonial Period and Independence</span>
-    <span class="float-right clickable"><span class="fa fa-bookmark fa-2x" aria-hidden="true" /></span>
+
+  <div class="card-header" style="color: white">
+    <span class="card-header-title">Question 69 - Colonial Period and Independence</span>
+    <% if num == 2%>
+    <span class="float-right fa fa-exclamation-triangle fa-2x" aria-hidden="true" title="You fail" />
+    <% else %>
+    <span class="float-right fa fa-graduation-cap fa-2x" aria-hidden="true" title="Master" />
+    <% end %>
   </div>
 
   <div class="card-block">
-    <div style="float: left; padding: 5px 25px 5px 10px">      
-      <img src="<%= image_url('photo.png') %>">
-    </div>
-    <div style="float: left;text-align: left;max-width: 70%">
-      <span style="color: #bf1438; font-size: 1.75rem">Who is the “Father of Our Country”?</span>
+    <div class="card-block-img"> <img src="<%= image_url('photo'+num.to_s+'.png') %>"> </div>
+    <div class="card-block-main">
+      <span class="card-block-main-question">Who is the “Father of Our Country”?</span>
       <br /><br />
-      <span style="color: black; font-size: 1.75rem">(George) Washington</span>
-
-      <br /><br />
-      <span style="color: black; font-size: 1rem">
-        George Washington is called the Father of Our Country. He was the first American president. 
-        Before that, he was a brave general who led the Continental Army to victory over Great Britain during 
-        the American Revolutionary War. After his victory over the British Army, Washington retired to his 
-        farm in Virginia named Mount Vernon. He left retirement to help create the new country’s system of 
-        government. He presided over the Constitutional Convention in Philadelphia in 1787. 
-      </span>
-
+      <button class="btn btn-info" type="button" onclick="mostrar(<%=num%>);" id="b<%=num%>">Show Answer</button>
+      <div id="q<%=num%>" style="display: none;">
+        <span class="card-block-main-answer">(George) Washington</span>
+        <br /><br />
+        <span class="card-block-main-text">
+          George Washington is called the Father of Our Country. He was the first American president. 
+          Before that, he was a brave general who led the Continental Army to victory over Great Britain during 
+          the American Revolutionary War. After his victory over the British Army, Washington retired to his 
+          farm in Virginia named Mount Vernon. He left retirement to help create the new country’s system of 
+          government. He presided over the Constitutional Convention in Philadelphia in 1787. 
+        </span>
+      </div>
     </div>
   </div>
 
-  <div class="card-footer text-muted" style="background-color: #042040">
-    Derechos no reservados 2017
-  </div>
+  <div class="card-footer text-muted"> </div>
 </div>
 
 <br />
 <br />
 <br />
+
+<% end %>
+
+
