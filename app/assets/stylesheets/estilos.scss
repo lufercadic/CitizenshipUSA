@@ -12,7 +12,7 @@ $gray-light:             #534561; // #777
 $gray-lighter:           #4F6995; // #eee
 $brand-primary:         #042A69 !default; // #337ab7
 $brand-success:         #5cb85c !default;
-$brand-info:            #5bc0de !default;
+$brand-info:            #4F6995 !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #BF1438 !default;
 
@@ -80,13 +80,14 @@ h4  {
   overflow: hidden;
   border-width: 0;
   outline: none;
-  border-radius: calculateRem(1px);
+  border-radius: calculateRem(0.5px) !important;
   box-shadow: 0 calculateRem(1px) calculateRem(4px) rgba(0, 0, 0, .6);
   //background-color: $gray-lighter!important;
   //color: $body-bg;
   transition: background-color .3s;
   height: calculateRem(54px);
   line-height: calculateRem(56px);
+
 
 }
 
