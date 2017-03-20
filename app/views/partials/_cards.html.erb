@@ -1,70 +1,99 @@
-
-<style type="text/css">
-  /*Estilos de la tarjeta.
-    Por el momento lo dejo aqui porque no estoy seguro donde
-    los pondremos ya que es algo solo para esta seccion*/
-
-  .card-footer { background-color: #042040; } /*$gray-dark*/
-
-  .card-header { background-color: #BF1438; } /*$brand-danger*/
-
-  .card-header-title { font-size: 1.5rem;  font-weight: bold;  color: White; }
-
-  .card-block-img { float: left; padding: 5px 25px 5px 10px; }
-
-  .card-block-main { float: left; text-align: left; max-width: 70%; }
-
-  .card-block-main-question { color: #BF1438; font-size: 1.75rem; } /*$brand-danger*/
-
-  .card-block-main-answer { color: black; font-size: 1.75rem; }
-
-  .card-block-main-text { color: black; font-size: 1rem;  }
-  .hidden {
-    display:none;
-  }
-</style>
-
-
-<% [1, 2, 3].each do |num| %>
+<% [0, 1, 2].each do |num| %>
 
 <div class="card text-center">
 
+  <!-- Cabecera de la tarjeta -->
   <div class="card-header" style="color: white">
-    <span class="card-header-title">Question 69 - Colonial Period and Independence</span>
-    <% if num == 2%>
-    <span class="float-right fa fa-exclamation-triangle fa-2x" aria-hidden="true" title="You fail" />
-    <% else %>
-    <span class="float-right fa fa-graduation-cap fa-2x" aria-hidden="true" title="Master" />
-    <% end %>
+    <span class="card-header-title">Question 97 - Integrated Civics (Symbols)</span>
+    <a href="#" data-toggle="modal" data-target="#luis" class="float-right">
+        <span class="fa fa-cog fa-2x" style="color: white" aria-hidden="true" title="Metodo de Luis" ></span>
+      </a>
   </div>
 
+  <!-- Contenido de la tarjeta -->
   <div class="card-block">
-    <div class="card-block-img"> <img src="<%= image_url('photo'+num.to_s+'.png') %>"> </div>
+    <div class="card-block-img">
+      <img src="<%= image_url('secreto.png') %>" data-img="<%= image_url('photo'+(num+1).to_s+'.png') %>">
+    </div>
+
     <div class="card-block-main">
-      <span class="card-block-main-question">Who is the “Father of Our Country”?</span>
+      <span class="card-block-main-question"><%= @pregunta[num] %></span>
       <br /><br />
-      <button class="btn btn-outline-info mostrar"  type="button"  id="b<%=num%>">Show Answer</button>
-      <div class="respuesta hidden"  id="q<%=num%>" >
-        <span class="card-block-main-answer">(George) Washington</span>
+      <button class="btn btn-info mostrar" type="button">Show Answer</button>
+      <div class="respuesta hidden">
+        <input type="radio" name="pregunta1"> <span class="card-block-main-answer">because there is one star for each state</span>
         <br /><br />
-        <span class="card-block-main-text  ">
-          George Washington is called the Father of Our Country. He was the first American president. 
-          Before that, he was a brave general who led the Continental Army to victory over Great Britain during 
-          the American Revolutionary War. After his victory over the British Army, Washington retired to his 
-          farm in Virginia named Mount Vernon. He left retirement to help create the new country’s system of 
-          government. He presided over the Constitutional Convention in Philadelphia in 1787. 
-        </span>
+        <input type="radio" name="pregunta1"> <span class="card-block-main-answer">because each star represents a state</span>
+        <br /><br />
+        <input type="radio" name="pregunta1"> <span class="card-block-main-answer">because there are 50 states</span>
+        <br /><br />
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalwin">Show Info</button>
       </div>
+    </div>
+
+    <div class="float-right">
+      <% if num == 0 %>
+      <span class="fa fa-check-circle fa-2x" style="color: #32CD32" aria-hidden="true" title="Good" ></span>
+      <% elsif num == 1 %>
+      <span class="fa fa-times-circle fa-2x" style="color: #FF4500" aria-hidden="true" title="Bad" ></span>
+      <% else %>
+      <span class="fa fa-trophy fa-2x" style="color: #FFD700" aria-hidden="true" title="The best" ></span>
+      <% end %>
     </div>
   </div>
 
+  <!-- Pie de la tarjeta -->
   <div class="card-footer text-muted"> </div>
+
+  <!-- Contenido oculto, texto asociado a la pregunta -->
+  <div class="card-info hidden"><%= @info[num] %></div>
 </div>
-
 <br />
 <br />
 <br />
-
 
 <% end %>
 
+
+
+<!-- Ventana Modal (La que muestra la informacion) -->
+<div class="modal fade" id="modalwin" tabindex="-1" role="dialog" aria-labelledby="ModalWindow" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h4 class="modal-title">Question Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p id="modalwin-text"></p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Ventana Modal (Para la configuracion) -->
+<div class="modal fade" id="luis">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Setup</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Aqui van las cosas que se podrian configurar</p>
+      </div>
+    </div>
+  </div>
+</div>

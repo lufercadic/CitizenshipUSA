@@ -53,8 +53,6 @@ $link-hover-decoration: underline !default;
 
 body {
   padding-top: calculateRem(70px); //para que la barra de navegacion fija no tape parte del contenido -- llama a la funcion calculateRem para calcular el valor REM de 70px
- // background-color: $body-bg; // ya no es necesario darle color.. lo toma de las variables de bootstrap
-
 }
 
 //Navegacion:  navbar
@@ -71,58 +69,56 @@ h4  {
 
 
 //Botones
-
+/*
 .btn {
-  position: relative;
-  display: block;
-  margin: calculateRem(30px) auto;
-  padding: 0;
-  overflow: hidden;
-  border-width: 0;
-  outline: none;
-  border-radius: calculateRem(0.5px) !important;
-  box-shadow: 0 calculateRem(1px) calculateRem(4px) rgba(0, 0, 0, .6);
-  //background-color: $gray-lighter!important;
-  //color: $body-bg;
-  transition: background-color .3s;
-  height: calculateRem(54px);
-  line-height: calculateRem(56px);
-
-
+    position: relative;
+    display: block;
+    margin: calculateRem(30px) auto;
+    padding: 0;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: calculateRem(0.5px) !important;
+    box-shadow: 0 calculateRem(1px) calculateRem(4px) rgba(0, 0, 0, .6);
+    //background-color: $gray-lighter!important;
+    //color: $body-bg;
+    transition: background-color .3s;
+    height: calculateRem(54px);
+    line-height: calculateRem(56px);
 }
 
 .btn:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: block;
-  width: 0;
-  padding-top: 0;
-  border-radius: 100%;
-  background-color: rgba(236, 240, 241, .3);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 0;
+    padding-top: 0;
+    border-radius: 100%;
+    background-color: rgba(236, 240, 241, .3);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .btn:active:before {
   width: 120%;
   padding-top: 120%;
   transition: width .2s ease-out, padding-top .2s ease-out;
-}
+}*/
 
 
 //las tarjetas
-
+/*
 .card {
   overflow:hidden;
   box-shadow: 0 calculateRem(1px) calculateRem(2px) 0 rgba(0,0,0,0.2);
   transition: 0.3s;
 }
-/* On mouse-over, add a deeper shadow */
+/* On mouse-over, add a deeper shadow * /
 .card:hover {
   box-shadow: 0 calculateRem(8px)  calculateRem(16px) 0 rgba(0,0,0,0.2);
 }
@@ -131,10 +127,11 @@ h4  {
   float: right;
   height: 100%;
 }
-/* Add some padding inside the card container */
+/* Add some padding inside the card container * /
 .container {
   padding: calculateRem(2px)  calculateRem(16px);
 }
+
 .card-block .rotate i {
   color: rgba(20, 20, 20, 0.15);
   position: absolute;
@@ -150,3 +147,4 @@ h4  {
   transform: rotate(-44deg);
 }
 
+*/
