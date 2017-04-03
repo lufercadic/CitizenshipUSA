@@ -1,114 +1,177 @@
-<div class="card text-center">
-  <div class="card-header">
-<span>Pregunta No. 1</span>
-    <span class="float-right clickable"><i class="fa fa-bookmark fa-1x" aria-hidden="true"></i>
-    <span class="float-right clickable"><i class="fa fa-check fa-1x" aria-hidden="true"></i>
-
-  </div>
-  <div class="card-block">
-    <h4 class="card-title">A: Principles of American Democracy</h4>
-    <p class="card-text">What is the supreme law of the land?</p>
-  </div>
-  <div>
-    <p>
-      <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Ver Respuesta
-      </button>
-    </p>
-    <div class="collapse" id="collapseExample">
-      <div class="card card-block">
-        <p><strong>R:</strong> The Constitution </p>
-         <p>The Founding Fathers of the United States wrote the Constitution in 1787. The Constitution is the “supreme law of the land.” The U.S. Constitution has lasted longer than any other country’s constitution. It establishes the basic principles of the United States government. The Constitution establishes a system of government called “representative democracy.” In a representative democracy, citizens choose representatives to make the laws. U.S. citizens also choose a president to lead the executive branch of government. The Constitution lists fundamental rights for all citizens and other people living in the United States. Laws made in the United States must follow the Constitution</p></div>
-    </div>
-  </div>
-
-
-  <div class="card-footer text-muted">
-    aqui puedein ir mas botones o algo
-  </div>
-</div>
-
-<br />
 
 
 
 
-<script type="text/javascript">
-  /*Esta es la funcion para mostras las respuestas*/
-  function mostrar(id)
-  {
-    var data = $("#q" + id);
-    var but = $("#b" + id);
-    but.hide();
-    data.show(500);
-  }
-</script>
-
-
-<style type="text/css">
-  /*Estilos de la tarjeta.
-    Por el momento lo dejo aqui porque no estoy seguro donde
-    los pondremos ya que es algo solo para esta seccion*/
-
-  .card-footer { background-color: #042040; } /*$gray-dark*/
-
-  .card-header { background-color: #BF1438; } /*$brand-danger*/
-
-  .card-header-title { font-size: 1.5rem;  font-weight: bold;  color: White; }
-
-  .card-block-img { float: left; padding: 5px 25px 5px 10px; }
-
-  .card-block-main { float: left; text-align: left; max-width: 70%; }
-
-  .card-block-main-question { color: #BF1438; font-size: 1.75rem; } /*$brand-danger*/
-
-  .card-block-main-answer { color: black; font-size: 1.75rem; }
-
-  .card-block-main-text { color: black; font-size: 1rem;  }
-
-</style>
-
-
-<% [1, 2, 3].each do |num| %>
-
-<div class="card text-center">
-
-  <div class="card-header" style="color: white">
-    <span class="card-header-title">Question 69 - Colonial Period and Independence</span>
-    <% if num == 2%>
-    <span class="float-right fa fa-exclamation-triangle fa-2x" aria-hidden="true" title="You fail" />
-    <% else %>
-    <span class="float-right fa fa-graduation-cap fa-2x" aria-hidden="true" title="Master" />
-    <% end %>
-  </div>
-
-  <div class="card-block">
-    <div class="card-block-img"> <img src="<%= image_url('photo'+num.to_s+'.png') %>"> </div>
-    <div class="card-block-main">
-      <span class="card-block-main-question">Who is the “Father of Our Country”?</span>
-      <br /><br />
-      <button class="btn btn-info" type="button" onclick="mostrar(<%=num%>);" id="b<%=num%>">Show Answer</button>
-      <div id="q<%=num%>" style="display: none;">
-        <span class="card-block-main-answer">(George) Washington</span>
-        <br /><br />
-        <span class="card-block-main-text">
-          George Washington is called the Father of Our Country. He was the first American president. 
-          Before that, he was a brave general who led the Continental Army to victory over Great Britain during 
-          the American Revolutionary War. After his victory over the British Army, Washington retired to his 
-          farm in Virginia named Mount Vernon. He left retirement to help create the new country’s system of 
-          government. He presided over the Constitutional Convention in Philadelphia in 1787. 
-        </span>
+<!-- Ventana Modal (Para la configuracion) -->
+<div class="modal fade" id="luis">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Setup</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+
+
+
+
+
+      <div class="modal-body">
+
+<!--opciones de respuesta de la ventana modal-->
+       <% [0, 1, 2].each do |num| %>   
+        
+         <div class="form-check">
+          <label class="form-check-label">
+
+
+          <%if num == 0%>
+    
+           <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios<%=num%>" value="<%= @respuestas[num]%>" checked >
+
+          <%else%>
+
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios<%=num%>" value="<%= @respuestas[num]%>">
+          
+          <%end%>   
+
+            <%= @respuestas[num]%>
+
+            </label>      
+
+          </div>
+
+          <script type="text/javascript">
+            $(document).ready(function()
+              {
+
+              $("#respuesta<%=num%>").text($('input:radio[name=exampleRadios]:checked').val());
+              $("#answer_choice").click(function () {  
+               
+                 $("#respuesta<%=num%>").text($('input:radio[name=exampleRadios]:checked').val());
+              
+                });
+               });
+          </script>
+
+        <% end %>          
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="answer_choice">Save changes</button>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<% [0, 1, 2].each do |num| %>
+
+<div class="card text-center">
+
+  <!-- Cabecera de la tarjeta -->
+  <div class="card-header" style="color: white">
+    <span class="card-header-title">Question 97 - Integrated Civics (Symbols)</span>
+    <a href="#" data-toggle="modal" data-target="#luis" class="float-right">
+        <span class="fa fa-cog fa-2x" style="color: white" aria-hidden="true" title="Metodo de Luis" ></span>
+      </a>
+  </div>
+
+  <!-- Contenido de la tarjeta -->
+  <div class="card-block">
+    <div class="card-block-img">
+      <img src="<%= image_url('secreto.png') %>" data-img="<%= image_url('photo'+(num+1).to_s+'.png') %>">
+    </div>
+
+    <div class="card-block-main">
+      <span class="card-block-main-question"><%= @pregunta[num] %></span>
+
+      <br /><br />
+      <button class="btn btn-info mostrar" type="button">Show Answer</button>    
+
+
+
+
+
+     <div class="respuesta hidden" >
+    
+       <span class="card-block-main-answer" id="respuesta<%=num%>"></span>
+       <br /><br />
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalwin">More Info</button>
+
+     
+
+
+       <!--<input type="radio" name="pregunta1"> <span class="card-block-main-answer">because there is one star for each state</span>
+        <br /><br />
+        <input type="radio" name="pregunta1"> <span class="card-block-main-answer">because each star represents a state</span>
+        <br /><br />
+        <input type="radio" name="pregunta1"> <span class="card-block-main-answer">because there are 50 states</span>
+        <br /><br />
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalwin">Show Info</button>-->
+      </div>
+       
+    </div>
+
+
+
+
+
+    <div class="float-right">
+      <% if num == 0 %>
+      <span class="fa fa-check-circle fa-2x" style="color: #32CD32" aria-hidden="true" title="Good" ></span>
+      <% elsif num == 1 %>
+      <span class="fa fa-times-circle fa-2x" style="color: #FF4500" aria-hidden="true" title="Bad" ></span>
+      <% else %>
+      <span class="fa fa-trophy fa-2x" style="color: #FFD700" aria-hidden="true" title="The best" ></span>
+      <% end %>
     </div>
   </div>
 
+  <!-- Pie de la tarjeta -->
   <div class="card-footer text-muted"> </div>
-</div>
 
+  <!-- Contenido oculto, texto asociado a la pregunta -->
+  <div class="card-info hidden"><%= @info[num] %></div>
+</div>
 <br />
 <br />
 <br />
 
 <% end %>
+
+
+
+<!-- Ventana Modal (La que muestra la informacion) -->
+<div class="modal fade" id="modalwin" tabindex="-1" role="dialog" aria-labelledby="ModalWindow" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h4 class="modal-title">Question Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p id="modalwin-text"></p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+ 
 
 

@@ -1,0 +1,21 @@
+ /*Estilos de la tarjeta.
+    Por el momento lo dejo aqui porque no estoy seguro donde
+    los pondremos ya que es algo solo para esta seccion*/
+
+.card-footer { background-color: $gray-dark; }
+
+.card-header { background-color: $brand-danger; }
+
+.card-header-title { font-size: 1.5rem;  font-weight: bold;  color: White; }
+
+.card-block-img { float: left; padding: 5px 25px 5px 10px; }
+
+.card-block-main { float: left; text-align: left; max-width: 70%; }
+
+.card-block-main-question { color: $brand-danger; font-size: 1.75rem; }
+
+.card-block-main-answer { color: black; font-size: 1.75rem; }
+
+.card-block-main-text { color: black; font-size: 1rem;  }
+
+.hidden { display:none; }
