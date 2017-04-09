@@ -30,7 +30,6 @@ class HomeController < ApplicationController
 
   		"What does the Constitution do?"
   	]
-<<<<<<< HEAD
 
     @respuestas = [
       "because there is one star for each state",
@@ -38,7 +37,5 @@ class HomeController < ApplicationController
       "because there are 50 states"
       ]
        
-=======
->>>>>>> origin/master
   end
 end
