@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170219040000) do
+ActiveRecord::Schema.define(version: 20170416182950) do
 
   create_table "civic_answers", force: :cascade do |t|
     t.string   "Descripcion"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20170219040000) do
     t.boolean  "Destacada"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "Informacion"
+    t.integer  "Numero"
   end
 
   create_table "civic_tags", force: :cascade do |t|

@@ -14,9 +14,6 @@
       </div>
 
 
-
-
-
       <div class="modal-body">
 
 <!--opciones de respuesta de la ventana modal-->
@@ -26,7 +23,7 @@
           <label class="form-check-label">
 
 
-          <%if num == 0%>
+          <% if num == 0 %>
     
            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios<%=num%>" value="<%= @respuestas[num]%>" checked >
 
@@ -71,13 +68,13 @@
 
 
 
-<% [0, 1, 2].each do |num| %>
+<% @preguntas.each do |pr| %>
 
 <div class="card text-center">
 
   <!-- Cabecera de la tarjeta -->
   <div class="card-header" style="color: white">
-    <span class="card-header-title">Question 97 - Integrated Civics (Symbols)</span>
+    <span class="card-header-title">Question <%=pr.Numero%> - Integrated Civics (Symbols)</span>
     <a href="#" data-toggle="modal" data-target="#luis" class="float-right">
         <span class="fa fa-cog fa-2x" style="color: white" aria-hidden="true" title="Metodo de Luis" ></span>
       </a>
@@ -86,47 +83,34 @@
   <!-- Contenido de la tarjeta -->
   <div class="card-block">
     <div class="card-block-img">
-      <img src="<%= image_url('secreto.png') %>" data-img="<%= image_url('photo'+(num+1).to_s+'.png') %>">
+      <img src="<%= image_url('secreto.png') %>" data-img="<%= image_url('photo'+(pr.Numero).to_s+'.png') %>">
     </div>
 
     <div class="card-block-main">
-      <span class="card-block-main-question"><%= @pregunta[num] %></span>
+      <span class="card-block-main-question"><%= pr.Descripcion %></span>
 
       <br /><br />
       <button class="btn btn-info mostrar" type="button">Show Answer</button>    
+      <div class="respuesta hidden" >
+        <span class="card-block-main-answer" id="respuesta<%=pr.Numero%>"></span>
+        <br /><br />
+        
+        <div style="display:block;"> <!-- Se oculta para la opcion de luis -->
+          <% pr.CivicAnswers.each do |re| %>
+          <span class="card-block-main-answer"><%= re.Descripcion %></span>
+          <br /><br />
+          <% end %>
+        </div>
 
-
-
-
-
-     <div class="respuesta hidden" >
-    
-       <span class="card-block-main-answer" id="respuesta<%=num%>"></span>
-       <br /><br />
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalwin">More Info</button>
-
-     
-
-
-       <!--<input type="radio" name="pregunta1"> <span class="card-block-main-answer">because there is one star for each state</span>
-        <br /><br />
-        <input type="radio" name="pregunta1"> <span class="card-block-main-answer">because each star represents a state</span>
-        <br /><br />
-        <input type="radio" name="pregunta1"> <span class="card-block-main-answer">because there are 50 states</span>
-        <br /><br />
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalwin">Show Info</button>-->
-      </div>
-       
+        
+      </div>  
     </div>
 
-
-
-
-
     <div class="float-right">
-      <% if num == 0 %>
+      <% if pr.Numero == 1 %>
       <span class="fa fa-check-circle fa-2x" style="color: #32CD32" aria-hidden="true" title="Good" ></span>
-      <% elsif num == 1 %>
+      <% elsif pr.Numero == 2 %>
       <span class="fa fa-times-circle fa-2x" style="color: #FF4500" aria-hidden="true" title="Bad" ></span>
       <% else %>
       <span class="fa fa-trophy fa-2x" style="color: #FFD700" aria-hidden="true" title="The best" ></span>
@@ -138,14 +122,13 @@
   <div class="card-footer text-muted"> </div>
 
   <!-- Contenido oculto, texto asociado a la pregunta -->
-  <div class="card-info hidden"><%= @info[num] %></div>
+  <div class="card-info hidden"><%= pr.Informacion %></div>
 </div>
 <br />
 <br />
 <br />
 
 <% end %>
-
 
 
 <!-- Ventana Modal (La que muestra la informacion) -->
@@ -171,7 +154,3 @@
     </div>
   </div>
 </div>
-
- 
-
-
