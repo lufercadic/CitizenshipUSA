@@ -3,6 +3,7 @@ function CardsMain()
 {
     Cards_MostrarRespuesta(); //Registramos la funcion de mostrar respuestas
     Cards_ModalTextoLargo(); //Registramos la funcion al evento show de la ventana modal
+    Cards_ModalOpcionRespuesta()
 } 
 
 
@@ -34,6 +35,29 @@ function Cards_ModalTextoLargo()
     })
 }
 
+
+
+function Cards_ModalOpcionRespuesta()
+{
+   for(var i=0; i<gon.preguntas_respuestas[1].length; i++){
+
+
+        var respuesta="#respuesta"+i
+        $(respuesta).text($('input:radio[name=exampleRadios]:checked').val()); 
+
+    }
+
+
+    $(".answer_choice").click(function () {  
+   
+               
+        answer_id=$(this).attr('id').substr(6)
+        respuesta="#respuesta"+answer_id
+        $(respuesta).text($('input:radio[name=exampleRadios]:checked').val());
+
+    });
+
+}
 
 
 

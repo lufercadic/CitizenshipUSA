@@ -3,10 +3,31 @@ class HomeController < ApplicationController
   	
     #por ahora se deja por la funcion de luis
     @respuestas = [
-      "because there is one star for each state",
-      "because each star represents a state",
-      "because there are 50 states"
+      "1",
+      "2",
+      "3"
       ]
+
+
+      @preguntas1 = [
+      "What is the supreme law of the land? ",
+
+      "Why does the flag have 50 stars?",
+
+      "What does the Constitution do?"
+    ]
+
+
+
+
+
+
+
+
+
+
+
+   
 
     #vector de preguntas
     @preguntas = Array.new(3);
@@ -46,6 +67,10 @@ class HomeController < ApplicationController
     @preguntas[2].CivicAnswers = [CivicAnswer.new(Descripcion: "sets up the government", Correcta: true),
       CivicAnswer.new(Descripcion: "defines the government", Correcta: true),
       CivicAnswer.new(Descripcion: "protects basic rights of Americans", Correcta: true)]
+
+
+
+    gon.preguntas_respuestas=[@preguntas1,@respuestas]
    
   end
 end
