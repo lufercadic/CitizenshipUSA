@@ -2,35 +2,12 @@ class HomeController < ApplicationController
   def index
   	
     #por ahora se deja por la funcion de luis
-    @respuestas = [
-      "1",
-      "2",
-      "3"
-      ]
-
-
-      @preguntas1 = [
-      "What is the supreme law of the land? ",
-
-      "Why does the flag have 50 stars?",
-
-      "What does the Constitution do?"
-    ]
-
-
-
-
-
-
-
-
-
-
-
+   num_preguntas=3
+   @r = Array.new(num_preguntas);
    
 
     #vector de preguntas
-    @preguntas = Array.new(3);
+    @preguntas = Array.new(num_preguntas);
 
     #Primer pregunta
     @preguntas[0] = CivicQuestion.new(Numero: 1, Destacada: false)
@@ -68,9 +45,13 @@ class HomeController < ApplicationController
       CivicAnswer.new(Descripcion: "defines the government", Correcta: true),
       CivicAnswer.new(Descripcion: "protects basic rights of Americans", Correcta: true)]
 
+for i in 0..num_preguntas-1
+   @r[i]=@preguntas[i].CivicAnswers
+end
 
 
-    gon.preguntas_respuestas=[@preguntas1,@respuestas]
+
+    gon.preguntas_respuestas=@r
    
   end
 end

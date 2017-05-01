@@ -36,24 +36,25 @@ function Cards_ModalTextoLargo()
 }
 
 
-
 function Cards_ModalOpcionRespuesta()
 {
-   for(var i=0; i<gon.preguntas_respuestas[1].length; i++){
+
+//seleciona por defecto la primera opcion   
+for(var i=0; i<gon.preguntas_respuestas.length; i++)
+   for(var j=1; j<=gon.preguntas_respuestas[i].length; j++){
 
 
-        var respuesta="#respuesta"+i
-        $(respuesta).text($('input:radio[name=exampleRadios]:checked').val()); 
+        var respuesta="#respuesta"+j
+        $(respuesta).text($('input:radio[name=exampleRadios'+j+']:checked').val()); 
 
     }
 
+    //pone como opcion la que se selecciona en la ventana modal
+    $(".answer_choice").click(function () { 
 
-    $(".answer_choice").click(function () {  
-   
-               
         answer_id=$(this).attr('id').substr(6)
         respuesta="#respuesta"+answer_id
-        $(respuesta).text($('input:radio[name=exampleRadios]:checked').val());
+        $(respuesta).text($('input:radio[name=exampleRadios'+answer_id+']:checked').val());
 
     });
 

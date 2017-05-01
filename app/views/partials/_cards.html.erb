@@ -1,11 +1,10 @@
-
-
-
+<% cont = 0%>
 <% @preguntas.each do |pr| %>
 
 
+
 <!-- Ventana Modal (Para la configuracion) -->
-<div class="modal fade" id="luis<%=(pr.Numero-1)%>">
+<div class="modal fade" id="luis<%=(pr.Numero)%>">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -16,49 +15,47 @@
       </div>
 
 
+
       <div class="modal-body">
 
-<!--opciones de respuesta de la ventana modal-->
-<!--opciones de respuesta de la ventana modal-->
 
-       <% [0, 1, 2].each do |num2| %>   
-        
+<!--opciones de respuesta de la ventana modal-->
+ <% for j in 0..@r[cont].length-1 %>      
+       
+
+
          <div class="form-check">
           <label class="form-check-label">
 
-
-          <%if num2 == 0%>
+          <!--selecciona la primera respuesta  por defercto; debe cambiar cuando la opcion venga de la BD-->
+          <%if j == 0%>
     
-           <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios<%=num2%>" value="<%= @respuestas[num2]%>" checked >
+           <input class="form-check-input" type="radio" name="exampleRadios<%=(pr.Numero)%>" id="exampleRadios<%=j+1%>" value="<%= @r[cont][j].Descripcion%>" checked >
 
           <%else%>
 
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios<%=num2%>" value="<%= @respuestas[num2]%>">
+            <input class="form-check-input" type="radio" name="exampleRadios<%=(pr.Numero)%>" id="exampleRadios<%=j+1%>" value="<%= @r[cont][j].Descripcion%>">
           
           <%end%>   
 
-            <%= @respuestas[num2]%>
+            <%= @r[cont][j].Descripcion%>
 
             </label>      
 
           </div>
 
-
-        <% end %>          
+          
+        <% end %> 
 
       </div>
      
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary answer_choice" id="answer<%=(pr.Numero-1)%>">Save changes</button>
+        <button type="button" class="btn btn-primary answer_choice" id="answer<%=(pr.Numero)%>">Save changes</button>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
 
 
 <div class="card text-center">
@@ -66,7 +63,7 @@
   <!-- Cabecera de la tarjeta -->
   <div class="card-header" style="color: white">
     <span class="card-header-title">Question <%=pr.Numero%> - Integrated Civics (Symbols)</span>
-    <a href="#" data-toggle="modal" data-target="#luis<%=(pr.Numero-1)%>" class="float-right">
+    <a href="#" data-toggle="modal" data-target="#luis<%=(pr.Numero)%>" class="float-right">
         <span class="fa fa-cog fa-2x" style="color: white" aria-hidden="true" title="Metodo de Luis" ></span>
       </a>
   </div>
@@ -83,7 +80,7 @@
       <br /><br />
       <button class="btn btn-info mostrar" type="button">Show Answer</button>    
       <div class="respuesta hidden" >
-        <span class="card-block-main-answer" id="respuesta<%=(pr.Numero-1)%>"></span>
+        <span class="card-block-main-answer" id="respuesta<%=(pr.Numero)%>"></span>
         <br /><br />
         
         <div style="display:block;"> <!-- Se oculta para la opcion de luis -->
@@ -119,6 +116,7 @@
 <br />
 <br />
 
+<% cont = cont+1 %>
 <% end %>
 
 
