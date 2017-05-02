@@ -1,7 +1,9 @@
+<style type="text/css">
+  a.iconbtn { color: white; }
+</style>
+
 <% cont = 0%>
 <% @preguntas.each do |pr| %>
-
-
 
 <!-- Ventana Modal (Para la configuracion) -->
 <div class="modal fade" id="luis<%=(pr.Numero)%>">
@@ -13,8 +15,6 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
-
 
       <div class="modal-body">
 
@@ -63,9 +63,6 @@
   <!-- Cabecera de la tarjeta -->
   <div class="card-header" style="color: white">
     <span class="card-header-title">Question <%=pr.Numero%> - Integrated Civics (Symbols)</span>
-    <a href="#" data-toggle="modal" data-target="#luis<%=(pr.Numero)%>" class="float-right">
-        <span class="fa fa-cog fa-2x" style="color: white" aria-hidden="true" title="Metodo de Luis" ></span>
-      </a>
   </div>
 
   <!-- Contenido de la tarjeta -->
@@ -83,31 +80,36 @@
         <span class="card-block-main-answer" id="respuesta<%=(pr.Numero)%>"></span>
         <br /><br />
         
-        <div style="display:block;"> <!-- Se oculta para la opcion de luis -->
+        <div style="display:none;"> <!-- Se oculta para la opcion de luis -->
           <% pr.CivicAnswers.each do |re| %>
           <span class="card-block-main-answer"><%= re.Descripcion %></span>
           <br /><br />
           <% end %>
         </div>
 
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalwin">More Info</button>
-        
       </div>  
-    </div>
-
-    <div class="float-right">
-      <% if pr.Numero == 1 %>
-      <span class="fa fa-check-circle fa-2x" style="color: #32CD32" aria-hidden="true" title="Good" ></span>
-      <% elsif pr.Numero == 2 %>
-      <span class="fa fa-times-circle fa-2x" style="color: #FF4500" aria-hidden="true" title="Bad" ></span>
-      <% else %>
-      <span class="fa fa-trophy fa-2x" style="color: #FFD700" aria-hidden="true" title="The best" ></span>
-      <% end %>
     </div>
   </div>
 
   <!-- Pie de la tarjeta -->
-  <div class="card-footer text-muted"> </div>
+  <div class="card-footer" style="text-align: center; font-size: 18px; color: white">
+      <a href="#" class="iconbtn" data-toggle="modal" data-target="#modalwin">
+        <span class="fa fa-newspaper-o fa-2x" style="" title="Show Info" ></span>
+      </a>
+      
+      <% if pr.Numero == 1 %>
+      <span class="fa fa-check-circle fa-2x" style="float: left;" aria-hidden="true" title="Good" ></span>
+      <% elsif pr.Numero == 2 %>
+      <span class="fa fa-times-circle fa-2x" style="float: left;" aria-hidden="true" title="Bad" ></span>
+      <% else %>
+      <span class="fa fa-trophy fa-2x" style="float: left;" aria-hidden="true" title="The best" ></span>
+      <% end %>
+
+      <a href="#" data-toggle="modal" data-target="#luis<%=(pr.Numero)%>" class="float-right iconbtn">
+        <span class="fa fa-cog fa-2x" style="float: right;" aria-hidden="true" title="Config" ></span>
+      </a>
+  </div>
+
 
   <!-- Contenido oculto, texto asociado a la pregunta -->
   <div class="card-info hidden"><%= pr.Informacion %></div>
@@ -143,3 +145,167 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+<!-- ********************************  320px     ************************************** -->
+<div class="card text-center" style="width: 320px">
+
+  <!-- Cabecera de la tarjeta -->
+  <div class="card-header" style="color: white">
+    <span class="card-header-title" style="font-size: 20px">Question ## - Screen 320</span>
+  </div>
+
+  <!-- Contenido de la tarjeta -->
+  <div class="card-block" style="font-size: 24px">
+    <div class="card-block-main" style="max-width:100%; text-align: center;">
+      <span class="card-block-main-question" style="font-size: inherit;">What is the supreme law of the land?</span>
+
+      <br /><br />
+      <div class="respuesta" >
+        <div style="display:block;">
+          <span class="card-block-main-answer" style="font-size: inherit;">sets up the government</span><br /><br />
+          <span class="card-block-main-answer" style="font-size: inherit;">defines the government</span><br /><br />
+          <span class="card-block-main-answer" style="font-size: inherit;">protects basic rights of Americans</span><br /><br />
+        </div>
+      </div>  
+    </div>
+
+  </div>
+
+  <!-- Pie de la tarjeta -->
+  <div class="card-footer" style="text-align: center; font-size: 16px; color: white">
+      <span class="fa fa-newspaper-o fa-3x" style="" title="Show Info" ></span>
+      <span class="fa fa-check-circle fa-3x" style="margin: 0px 40px" aria-hidden="true" title="Good" ></span>
+      <span class="fa fa-cog fa-3x" style="" aria-hidden="true" title="Config" ></span>
+  </div>
+</div>
+<br />
+<br />
+<br />
+
+
+<!-- ********************************  480px     ************************************** -->
+<div class="card text-center" style="width: 480px">
+
+  <!-- Cabecera de la tarjeta -->
+  <div class="card-header" style="color: white">
+    <span class="card-header-title">Question ## - Screen 480</span>
+  </div>
+
+  <!-- Contenido de la tarjeta -->
+  <div class="card-block" style="font-size: 26px;">
+    <div class="card-block-img" style="max-width:100%; text-align: center; float: none;">
+      <img src="<%= image_url('secreto.png') %>" data-img="<%= image_url('photo1.png') %>" style="width: 250px">
+    </div>
+<br />
+    <div class="card-block-main" style="max-width:100%; text-align: center;">
+      <span class="card-block-main-question" style="font-size: 8px; font-size: inherit;">What is the supreme law of the land?</span>
+
+      <br /><br />
+      <div class="respuesta" >
+        <div style="display:block;">
+          <span class="card-block-main-answer" style="font-size: inherit;">sets up the government</span><br /><br />
+          <span class="card-block-main-answer" style="font-size: inherit;">defines the government</span><br /><br />
+          <span class="card-block-main-answer" style="font-size: inherit;">protects basic rights of Americans</span><br /><br />
+        </div>
+      </div>  
+    </div>
+
+    
+  </div>
+
+  <!-- Pie de la tarjeta -->
+  <div class="card-footer" style="text-align: center; font-size: 18px; color: white">
+      <span class="fa fa-newspaper-o fa-3x" style="" title="Show Info" ></span>
+      <span class="fa fa-times-circle fa-3x" style="margin: 0px 50px" aria-hidden="true" title="Good" ></span>
+      <span class="fa fa-cog fa-3x" style="" aria-hidden="true" title="Config" ></span>
+  </div>
+</div>
+<br />
+<br />
+<br />
+
+
+<!-- ********************************  768px     ************************************** -->
+<div class="card text-center" style="width: 768px">
+
+  <!-- Cabecera de la tarjeta -->
+  <div class="card-header" style="color: white">
+    <span class="card-header-title">Question ## - Screen 768</span>
+  </div>
+
+  <!-- Contenido de la tarjeta -->
+  <div class="card-block" style="font-size: 26px;">
+    <div class="card-block-img">
+      <img src="<%= image_url('secreto.png') %>" data-img="<%= image_url('photo1.png') %>" style="width: 250px">
+    </div>
+
+    <div class="card-block-main" style="max-width: 60%">
+      <span class="card-block-main-question" style="font-size: inherit;">What is the supreme law of the land?</span>
+
+      <br /><br />
+      <div class="respuesta" >
+        <div style="display:block;">
+          <span class="card-block-main-answer" style="font-size: inherit;">sets up the government</span><br /><br />
+          <span class="card-block-main-answer" style="font-size: inherit;">defines the government</span><br /><br />
+          <span class="card-block-main-answer" style="font-size: inherit;">protects basic rights of Americans</span><br /><br />
+        </div>
+      </div>  
+    </div>
+  </div>
+
+  <!-- Pie de la tarjeta -->
+  <div class="card-footer" style="text-align: center; font-size: 18px; color: white">
+      <span class="fa fa-newspaper-o fa-2x" style="" title="Show Info" ></span>
+      <span class="fa fa-check-circle fa-2x" style="float: left;" aria-hidden="true" title="Good" ></span>
+      <span class="fa fa-cog fa-2x" style="float: right;" aria-hidden="true" title="Config" ></span>
+  </div>
+</div>
+<br />
+<br />
+<br />
+
+
+
+
+<!-- ********************************  992px     ************************************** -->
+<div class="card text-center" style="width: 992px">
+
+  <!-- Cabecera de la tarjeta -->
+  <div class="card-header" style="color: white">
+    <span class="card-header-title">Question ## - Screen 992</span>
+  </div>
+
+  <!-- Contenido de la tarjeta -->
+  <div class="card-block" style="font-size: 26px;">
+    <div class="card-block-img">
+      <img src="<%= image_url('secreto.png') %>" data-img="<%= image_url('photo1.png') %>" style="width: 250px">
+    </div>
+
+    <div class="card-block-main" style="max-width: 60%">
+      <span class="card-block-main-question" style="font-size: inherit;">What is the supreme law of the land?</span>
+
+      <br /><br />
+      <div class="respuesta" >
+        <div style="display:block;">
+          <span class="card-block-main-answer" style="font-size: inherit;">sets up the government</span><br /><br />
+          <span class="card-block-main-answer" style="font-size: inherit;">defines the government</span><br /><br />
+          <span class="card-block-main-answer" style="font-size: inherit;">protects basic rights of Americans</span><br /><br />
+        </div>
+      </div>  
+    </div>
+  </div>
+
+  <!-- Pie de la tarjeta -->
+  <div class="card-footer" style="text-align: center; font-size: 18px; color: white">
+      <span class="fa fa-newspaper-o fa-2x" style="" title="Show Info" ></span>
+      <span class="fa fa-check-circle fa-2x" style="float: left;" aria-hidden="true" title="Good" ></span>
+      <span class="fa fa-cog fa-2x" style="float: right;" aria-hidden="true" title="Config" ></span>
+  </div>
+</div>
+<br />
+<br />
+<br />
