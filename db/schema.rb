@@ -10,18 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416182950) do
+ActiveRecord::Schema.define(version: 20170517034819) do
 
   create_table "civic_answers", force: :cascade do |t|
     t.string   "Descripcion"
     t.boolean  "Correcta"
     t.boolean  "Activa"
     t.integer  "CivicQuestion_id"
-    t.integer  "Zone_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["CivicQuestion_id"], name: "index_civic_answers_on_CivicQuestion_id"
-    t.index ["Zone_id"], name: "index_civic_answers_on_Zone_id"
   end
 
   create_table "civic_favorites", force: :cascade do |t|
@@ -107,6 +105,15 @@ ActiveRecord::Schema.define(version: 20170416182950) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "what_zones", force: :cascade do |t|
+    t.integer  "Zone_id"
+    t.integer  "CivicAnswer_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["CivicAnswer_id"], name: "index_what_zones_on_CivicAnswer_id"
+    t.index ["Zone_id"], name: "index_what_zones_on_Zone_id"
   end
 
   create_table "zones", force: :cascade do |t|
